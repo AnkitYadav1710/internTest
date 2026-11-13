@@ -38,10 +38,14 @@ The application also uses Browser Local Storage to save the last selected backgr
 ## Project Structure
 
 ```text
-Random-Background-Color-Generator/
+internTest/
 │
 ├── index.html
-└── README.md
+├── README.md
+│
+└── screenshots/
+    ├── initial-page.png
+    └── after-backgroundchange.png
 ```
 
 The HTML, CSS, and JavaScript code are all contained within a single `index.html` file.
