@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Background Color</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        min-height: 100dvh;
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+          sans-serif;
+        background-color: #ffffff;
+        transition: background-color 0.3s ease;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 360px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.92);
+        padding: 2rem 1.5rem;
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        margin: 0 0 1.5rem;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #444;
+      }
+
+      #color-code {
+        display: block;
+        margin-top: 8px;
+        font-family: monospace;
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: #111;
+      }
+
+      button {
+        width: 100%;
+        min-height: 52px;
+        padding: 14px 20px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #fff;
+        background-color: #111;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button:active {
+        transform: scale(0.97);
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Background Color<span id="color-code">#FFFFFF</span></h2>
+      <button id="change-btn">Change Color</button>
+    </div>
+
+    <script>
+      const button = document.getElementById("change-btn");
+      const colorCodeDisplay = document.getElementById("color-code");
+      const STORAGE_KEY = "savedBgColor";
+
+      function applyColor(color) {
+        document.body.style.backgroundColor = color;
+        colorCodeDisplay.textContent = color;
+      }
+
+      function getRandomHexColor() {
+        const hexChars = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += hexChars[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      const savedColor = localStorage.getItem(STORAGE_KEY);
+      if (savedColor) {
+        applyColor(savedColor);
+      }
+
+      button.addEventListener("click", () => {
+        const newColor = getRandomHexColor();
+        applyColor(newColor);
+        localStorage.setItem(STORAGE_KEY, newColor);
+      });
+    </script>
+  </body>
+</html>
