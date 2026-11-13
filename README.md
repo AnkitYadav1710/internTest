@@ -7,6 +7,7 @@ The application also uses Browser Local Storage to save the last selected backgr
 ## Source code
 
 [Github Repository](https://github.com/AnkitYadav1710/internTest)
+[Code](https://github.com/AnkitYadav1710/internTest/blob/main/index.html)
 
 ## Features
 
